@@ -73,7 +73,6 @@ class MessageBuilder:
         bits[7] = header.recursion_desired
         bits[8] = header.recursion_available
         #bits 9-12 are reserved, laeave as 0
-        #TODO: handle response code 
         return bits.uint
     
     #given a DNSQuestion object, return the corresponding bytestring

@@ -50,11 +50,11 @@ class DNSHeader:
         self.response_code = 0 
 
     def print(self):
-        print("\nHEADER:\n\tidentifier: {}\n\tqcnt: {}\n\tanscnt: {}\n\tauthcnt: {}\n\taddcnt: {}".format(
+        print("HEADER:\n\tidentifier: {}\n\tqcnt: {}\n\tanscnt: {}\n\tauthcnt: {}\n\taddcnt: {}".format(
         self.id, self.question_cnt, self.answer_cnt, self.auth_cnt, self.additional_cnt))
 
     def print_flags(self):
-        print("\nFLAGS:\n\tquery_response: {}\n\top_code: {}\n\tauth_answer: {}\n\ttruncated: {}\n\trecursion_desired: {}\n\trecursion_available: {}\n\treserved: {}\n\tresponse_code: {}".format(
+        print("\nHEADER FLAGS:\n\tquery_response: {}\n\top_code: {}\n\tauth_answer: {}\n\ttruncated: {}\n\trecursion_desired: {}\n\trecursion_available: {}\n\treserved: {}\n\tresponse_code: {}".format(
             self.query_response, self.op_code, self.auth_answer, self.truncated, 
             self.recursion_desired, self.recursion_available, self.reserved, self.response_code))
 

@@ -1,11 +1,12 @@
 import time
 
+#a simple cache for storing DNS resource records
 class DNSCache:
     def __init__(self):
         self.cache = {}
 
+    #add item to the cache with expiry time
     def set(self, domain, answers, ttl):
-        print("CACHE SIZE {}".format(len(self.cache)))
         expiry = time.time() + ttl
         self.cache[domain] = (answers, expiry)
 

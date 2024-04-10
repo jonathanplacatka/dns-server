@@ -37,8 +37,9 @@ class DNSServer:
                     print("DNS request from {} for {}".format(address, request.question.domain))
 
                     answers = self.cache.get(request.question.domain)
-
-                    if answers == None:
+                    if answers := self.cache.get(request.question.domain):
+                        print("Cached value found for {}".format(request.question.domain))
+                    else:
                         answers = self.resolve(request.question.domain)
              
                     if len(answers) > 0:
@@ -52,7 +53,7 @@ class DNSServer:
                         print("IP Address for {} could not be found".format(request.question.domain))
 
                 else:
-                    print('Unsupported Request Type for request:')
+                    print('Unsupported Request Type')
                     response_bytes = self.builder.build_response(request, RCode.NOT_IMPLEMENTED, [])
                   
                 server_sock.sendto(response_bytes, address)
@@ -109,7 +110,6 @@ class DNSServer:
                 ns_ip = ns_answers[0].rdata
             return ns_ip
 
-#TODO: cli args for port?
 def main():
     server = DNSServer('localhost', int(sys.argv[1]))
     server.run()
